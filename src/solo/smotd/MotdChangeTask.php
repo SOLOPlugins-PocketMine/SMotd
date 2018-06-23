@@ -2,9 +2,17 @@
 
 namespace solo\smotd;
 
-class MotdChangeTask extends SMotdTask{
+use pocketmine\scheduler\Task;
 
-  public function _onRun(int $currentTick){
+class MotdChangeTask extends Task{
+
+  private $owner;
+
+  public function __construct(SMotd $owner){
+    $this->owner = $owner;
+  }
+
+  public function onRun(int $currentTick){
     if($currentTick % $this->owner->getChangeInterval() != 0){
       return;
     }

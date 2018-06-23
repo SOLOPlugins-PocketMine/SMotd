@@ -54,7 +54,7 @@ class SMotd extends PluginBase{
       $this->getServer()->getCommandMap()->register("smotd", new $class($this));
     }
 
-    $this->getServer()->getScheduler()->scheduleRepeatingTask(new MotdChangeTask($this), 1);
+    $this->getScheduler()->scheduleRepeatingTask(new MotdChangeTask($this), 1);
   }
 
   public function onDisable(){
